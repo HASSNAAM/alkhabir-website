@@ -1,0 +1,558 @@
+/* Global Rules */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Noto Kufi Arabic", sans-serif;
+}
+:root {
+  --color1: #fda804;
+}
+::selection {
+  background-color: var(--color1);
+  color: #fff;
+}
+/* Puy Course */
+.puy-course {
+  width: 350px;
+  padding: 20px 30px;
+  background-color: #fff;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  z-index: 1000;
+  animation: showMenu 0.4s ease forwards;
+  /* display: none; */
+  /* opacity: 0; */
+}
+@keyframes showMenu {
+  to {
+    left: 0;
+  }
+}
+.puy-course i {
+  position: absolute;
+  left: 30px;
+  top: 20px;
+  font-size: 35px;
+  color: #666666;
+  cursor: pointer;
+}
+/* Header */
+header .up {
+  display: flex;
+  justify-content: space-between;
+  height: 22px;
+  background-color: #000;
+  padding-right: 7%;
+}
+header .up h1 {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color1);
+}
+header .up > div {
+  width: 50%;
+  position: relative;
+}
+header .up div span,
+header .up div i:nth-of-type(2) {
+  font-size: 10px;
+  font-weight: bold;
+  background-color: var(--color1);
+  width: 15px;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 10%;
+  top: 3px;
+  border-radius: 2px;
+}
+header .up div i:nth-of-type(1) {
+  font-size: 22px;
+  color: var(--color1);
+  position: absolute;
+  left: 20%;
+  bottom: 0;
+}
+header .up div i:nth-of-type(2) {
+  left: 13%;
+}
+@media (min-width: 677px) and (max-width: 991px) {
+  header .up div i:nth-of-type(2) {
+    margin-left: 7px;
+  }
+}
+@media (max-width: 676px) {
+  header h1 {
+    padding-right: 7%;
+  }
+  header .up div span {
+    left: 3px;
+  }
+  header .up div i:nth-of-type(2) {
+    left: 11%;
+  }
+  header .up div i:nth-of-type(1) {
+    left: 25%;
+  }
+}
+header section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  overflow: hidden;
+}
+header section .logo,
+header section .social {
+  width: 50%;
+}
+header section .social {
+  text-align: left;
+}
+header section i,
+footer .social i {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #000;
+  color: #fff;
+  padding: 5px;
+  text-align: center;
+  font-size: 18px;
+}
+@media (min-width: 767px) {
+  header section {
+    padding: 0 4% 0 3%;
+  }
+  img {
+    width: 27%;
+  }
+}
+@media (max-width: 766px) {
+  header section {
+    height: 188px;
+    padding-left: 5px;
+  }
+  img {
+    width: 100%;
+  }
+}
+header nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 5% 15px 8%;
+  align-items: center;
+  background-color: #000;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 400;
+  transition: all 0.3s ease-in-out;
+}
+header nav ul,
+header nav .cart {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+a {
+  text-decoration: none;
+  color: #fff;
+  display: inline-block;
+}
+header nav a {
+  padding: 5px 20px;
+}
+header nav .cart > i {
+  font-size: 25px;
+  margin-right: 10px;
+}
+header nav .bars {
+  display: none;
+}
+header nav .cart a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+@media (max-width: 991px) {
+  header nav {
+    padding-left: 5%;
+  }
+  header nav .cart {
+    margin-right: 30px;
+  }
+  header nav ul {
+    display: none;
+  }
+  header nav .bars {
+    display: block;
+    width: 100%;
+  }
+  header nav .bars i {
+    padding-right: 20%;
+    cursor: pointer;
+    font-size: 25px;
+  }
+  header nav .bars .list ol {
+    list-style: none;
+    background-color: #fff;
+    width: 100%;
+    height: 220px;
+    margin-top: 10px;
+    border: 0.1px solid #ffffff00;
+  }
+  header nav .bars .list ol li {
+    padding: 3px 5px;
+    transition: all 0.3s ease-in-out;
+  }
+  header nav .bars .list ol li a {
+    color: #000;
+    font-size: 15px;
+    transition: all 0.3s ease-in-out;
+  }
+  header nav .bars .list ol li:hover,
+  .active {
+    background-color: #3a3838;
+  }
+  header nav .bars .list ol li:hover a,
+  .active a {
+    color: #fff !important;
+  }
+  .list {
+    display: none;
+  }
+  .close {
+    margin-right: 20%;
+    display: none;
+  }
+}
+header .banner {
+  background-image: url(images/banner25.jpg);
+  width: 100%;
+  height: 565px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header .banner::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.5;
+}
+header .banner .content {
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+header .banner .content h2 {
+  font-size: 55px;
+  font-weight: 600;
+}
+header .banner .content p {
+  font-size: 15px;
+  font-weight: 400;
+  text-align: center;
+}
+header .banner .content .search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  margin-top: 25px;
+}
+header .banner .content .search .input {
+  height: 100%;
+  width: 545px;
+}
+header .banner .content .search .input input {
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: none;
+  padding: 1px 20px 1px 0;
+  font-style: italic;
+}
+header .banner .content .search .icon {
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  background-color: var(--color1);
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+@media (max-width: 767px) {
+  header .banner {
+    height: 400px;
+  }
+  header .banner .content {
+    padding: 10px;
+  }
+  header .banner .content h2 {
+    font-size: 31px;
+  }
+  header .banner .content .search,
+  header .banner .content .search .icon {
+    height: 45px;
+  }
+}
+/* Main */
+main {
+  width: 100%;
+  padding: 50px 10px 90px 0;
+}
+main h2 {
+  color: var(--color1);
+  font-size: 19px;
+  margin: 20px 0 10px;
+}
+main .courses {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+main .courses > div {
+  position: relative;
+  width: 225px;
+  height: 450px;
+  margin-bottom: 35px;
+  overflow: hidden;
+  box-shadow: 1px 1px 1px 1px #eee, -1px -1px 1px 1px #eee;
+}
+main .courses > div .img {
+  width: 225px;
+  height: 224px;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+main .courses > div .img .logo img {
+  width: 225px;
+  max-width: 100%;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+main .courses > div .img .read-more {
+  background-color: var(--color1);
+  padding: 12px 15px 0;
+  font-size: 13px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  cursor: pointer;
+  height: 50px;
+  transition: all 0.3s ease-in-out;
+}
+main .courses > div .img .read-more a {
+  color: #000;
+  display: block;
+}
+main .courses > div .img .logo {
+  overflow: hidden;
+  width: 252px;
+  height: 230px;
+}
+main .courses > div .img .logo:hover img {
+  scale: 1.05;
+}
+main .courses > div .img:hover .read-more {
+  display: block;
+}
+main .courses > div .read-more:hover {
+  background-color: #af790c;
+}
+main .courses > div .img .alt-logo {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+main .courses > div .img .alt-logo img {
+  width: 100%;
+}
+main .courses > div a h5 {
+  font-size: 14px;
+  font-weight: normal;
+  color: #666666;
+  transition: all 0.3s ease-in-out;
+}
+main .courses > div a h5:hover {
+  text-decoration: underline;
+}
+main .courses > div a p {
+  font-size: 16px;
+  color: #000;
+  transition: all 0.3s ease-in-out;
+}
+main .courses > div a p:hover {
+  color: var(--color1);
+}
+main .courses > div a:has(h5, p) {
+  display: block;
+  text-align: center;
+}
+main .courses > div a:nth-of-type(1):has(h5) {
+  padding-top: 40px;
+}
+main .courses > div a:nth-of-type(2) {
+  font-weight: bold;
+}
+main .courses > div .detalies {
+  border-top: 1px solid #eee;
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 12%;
+  padding-top: 10px;
+  font-size: 15px;
+  color: #666666;
+  justify-content: space-around;
+  font-weight: bold;
+}
+main .courses > div .detalies::after {
+  width: 30px;
+  height: 4px;
+  background-color: var(--color1);
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -2px;
+}
+main .courses > div .detalies .price del {
+  opacity: 0.6;
+  margin-left: 10px;
+}
+main .courses > div .detalies .price span {
+  color: orangered;
+}
+@media (max-width: 767px) {
+  main .courses {
+    justify-content: center;
+    padding: 20px;
+  }
+  main .courses > div {
+    width: 100%;
+  }
+  main .courses > div .img {
+    width: 100%;
+  }
+  main .courses > div .img .logo img,
+  main .courses > div .img .logo {
+    width: 100%;
+  }
+  main .courses {
+    height: fit-content;
+  }
+}
+/* Footer */
+footer {
+  background-color: #eeeeee8f;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+footer .info {
+  width: 70%;
+}
+footer .info .imge {
+  width: 100%;
+  text-align: right;
+  padding-right: 18%;
+}
+footer .media p {
+  font-weight: bolder;
+  text-align: center;
+  font-size: 25px;
+}
+@media (min-width: 768px) {
+  footer .info .imge img {
+    width: 35%;
+  }
+}
+footer .info .information {
+  font-size: 12px;
+  font-weight: normal;
+  width: 50%;
+  padding-right: 10%;
+}
+@media (min-width: 768px) {
+  footer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+  }
+  footer .info {
+    width: 50%;
+    text-align: center;
+  }
+  footer .media {
+    padding-left: 150px;
+  }
+}
+@media (max-width: 767px) {
+  footer {
+    padding: 20px 0;
+  }
+  footer .info .imge {
+    padding-right: 25%;
+  }
+  footer .info .imge img {
+    width: 70%;
+  }
+  footer .info,
+  footer .info .information {
+    width: 100%;
+  }
+  footer .info .information {
+    padding-left: 5%;
+    text-align: center;
+  }
+}
+/* Pay */
+.pay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 20px 0 20px;
+}
+.copy {
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 0;
+}
