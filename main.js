@@ -15,8 +15,7 @@ let puyCart = document.getElementById("cart");
 let puyCourse = document.querySelector(".puy-course");
 let menuCart = document.querySelector(".close-menu");
 puyCart.addEventListener("click", function () {
-    // puyCourse.style.display = "block";
-    puyCourse.style.opacity = "1";
+    puyCourse.style.display = "block";
 });
 menuCart.addEventListener("click", function () {
   puyCourse.style.display = "none";
