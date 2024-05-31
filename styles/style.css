@@ -22,12 +22,21 @@
   top: 0;
   left: -100%;
   z-index: 1000;
-  animation: showMenu 0.4s ease forwards;
-  display: none; 
+  animation: showMenu 0.4s ease-in-out forwards;
+  display: none;
+  -webkit-animation: showMenu 0.4s ease-in-out forwards;
 }
 @keyframes showMenu {
   to {
     left: 0;
+  }
+}
+@keyframes closeMenu {
+  from {
+    left: 0;
+  }
+  to {
+    left: -100%;
   }
 }
 .puy-course i {
@@ -39,12 +48,13 @@
   cursor: pointer;
 }
 /* Header */
+/* Up NavBar  */
 header .up {
   display: flex;
   justify-content: space-between;
   height: 22px;
   background-color: #000;
-  padding-right: 7%;
+  padding: 0 6%;
 }
 header .up h1 {
   font-size: 12px;
@@ -52,11 +62,13 @@ header .up h1 {
   color: var(--color1);
 }
 header .up > div {
-  width: 50%;
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 10%;
 }
 header .up div span,
-header .up div i:nth-of-type(2) {
+header .up div i {
   font-size: 10px;
   font-weight: bold;
   background-color: var(--color1);
@@ -65,53 +77,26 @@ header .up div i:nth-of-type(2) {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  left: 10%;
-  top: 3px;
   border-radius: 2px;
+  margin-right: 15px;
 }
 header .up div i:nth-of-type(1) {
   font-size: 22px;
   color: var(--color1);
-  position: absolute;
-  left: 20%;
-  bottom: 0;
+  background-color: transparent;
 }
-header .up div i:nth-of-type(2) {
-  left: 13%;
-}
-@media (min-width: 677px) and (max-width: 991px) {
-  header .up div i:nth-of-type(2) {
-    margin-left: 7px;
-  }
-}
-@media (max-width: 676px) {
-  header h1 {
-    padding-right: 7%;
-  }
-  header .up div span {
-    left: 3px;
-  }
-  header .up div i:nth-of-type(2) {
-    left: 11%;
-  }
-  header .up div i:nth-of-type(1) {
-    left: 25%;
-  }
-}
+/* Logo Section */
 header section {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   overflow: hidden;
+  max-height: 188px;
+  padding: 0 65px;
 }
-header section .logo,
-header section .social {
-  width: 50%;
-}
-header section .social {
-  text-align: left;
+header section .social i {
+  transition: all 0.3s ease-in-out;
 }
 header section i,
 footer .social i {
@@ -123,34 +108,30 @@ footer .social i {
   padding: 5px;
   text-align: center;
   font-size: 18px;
+  transition: all 0.3s ease-in-out;
 }
-@media (min-width: 767px) {
-  header section {
-    padding: 0 4% 0 3%;
-  }
-  img {
-    width: 27%;
-  }
+img {
+  width: 27%;
 }
 @media (max-width: 766px) {
-  header section {
-    height: 188px;
-    padding-left: 5px;
-  }
   img {
-    width: 100%;
+    width: 75%;
+  }
+  header section {
+    padding: 20px;
   }
 }
+/* Nav Bar */
 header nav {
   display: flex;
   justify-content: space-between;
-  padding: 15px 5% 15px 8%;
+  padding: 15px 5%;
   align-items: center;
   background-color: #000;
   color: #fff;
   font-size: 15px;
-  font-weight: 400;
-  transition: all 0.3s ease-in-out;
+  font-weight: 500;
+  position: relative;
 }
 header nav ul,
 header nav .cart {
@@ -158,12 +139,17 @@ header nav .cart {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50%;
 }
 a {
   text-decoration: none;
   color: #fff;
   display: inline-block;
+  transition: all 0.3s ease-in-out;
+}
+a:hover,
+header section .social i:hover,
+footer .social i:hover {
+  color: var(--color1);
 }
 header nav a {
   padding: 5px 20px;
@@ -172,32 +158,39 @@ header nav .cart > i {
   font-size: 25px;
   margin-right: 10px;
 }
-header nav .bars {
-  display: none;
-}
 header nav .cart a {
   display: flex;
   align-items: center;
   gap: 5px;
 }
+.bar {
+  display: none;
+}
+.hidden {
+  display: none;
+}
 @media (max-width: 991px) {
-  header nav {
-    padding-left: 5%;
-  }
   header nav .cart {
     margin-right: 30px;
   }
   header nav ul {
     display: none;
   }
-  header nav .bars {
+  .bar {
     display: block;
-    width: 100%;
+    font-size: 40px;
   }
-  header nav .bars i {
-    padding-right: 20%;
-    cursor: pointer;
-    font-size: 25px;
+  header nav .bars {
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 60px;
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
   }
   header nav .bars .list ol {
     list-style: none;
@@ -224,37 +217,23 @@ header nav .cart a {
   .active a {
     color: #fff !important;
   }
-  .list {
-    display: none;
-  }
-  .close {
-    margin-right: 20%;
-    display: none;
-  }
 }
+/* Banner */
 header .banner {
-  background-image: url(images/banner25.jpg);
+  background-color: #00000077;
+  background-image: url(../images/banner25.jpg);
   width: 100%;
   height: 565px;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
-  position: relative;
+  background-position: center center;
+  background-blend-mode: overlay;
   color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-header .banner::before {
-  position: absolute;
-  content: "";
-  width: 100%;
-  height: 100%;
-  background-color: #000;
-  opacity: 0.5;
-}
 header .banner .content {
-  z-index: 100;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -268,7 +247,6 @@ header .banner .content h2 {
 }
 header .banner .content p {
   font-size: 15px;
-  font-weight: 400;
   text-align: center;
 }
 header .banner .content .search {
@@ -277,24 +255,25 @@ header .banner .content .search {
   align-items: center;
   width: 100%;
   height: 60px;
-  margin-top: 25px;
+  margin-top: 40px;
+  width: 50%;
+  border: 3px solid transparent;
 }
-header .banner .content .search .input {
-  height: 100%;
-  width: 545px;
-}
-header .banner .content .search .input input {
-  width: 100%;
+header .banner .content .search input {
+  width: 90%;
   height: 100%;
   outline: none;
   border: none;
-  padding: 1px 20px 1px 0;
+  padding: 5px 10px;
   font-style: italic;
+}
+header .banner .content .search:focus-within {
+  border-color: var(--color1);
 }
 header .banner .content .search .icon {
   cursor: pointer;
-  width: 60px;
-  height: 60px;
+  width: 10%;
+  height: 100%;
   background-color: var(--color1);
   color: #000;
   display: flex;
@@ -312,27 +291,35 @@ header .banner .content .search .icon {
   header .banner .content h2 {
     font-size: 31px;
   }
-  header .banner .content .search,
+  header .banner .content .search {
+    height: 55px;
+    width: 100%;
+  }
   header .banner .content .search .icon {
-    height: 45px;
+    width: 15%;
+  }
+  header .banner .content .search input {
+    width: 85%;
   }
 }
 /* Main */
 main {
   width: 100%;
-  padding: 50px 10px 90px 0;
+  padding: 100px 50px;
 }
 main h2 {
   color: var(--color1);
   font-size: 19px;
-  margin: 20px 0 10px;
+  margin-bottom: 40px;
+  text-align: center;
 }
 main .courses {
   width: 100%;
-  height: 500px;
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
 }
 main .courses > div {
   position: relative;
@@ -406,6 +393,7 @@ main .courses > div a h5 {
 }
 main .courses > div a h5:hover {
   text-decoration: underline;
+  font-weight: bold;
 }
 main .courses > div a p {
   font-size: 16px;
@@ -458,100 +446,47 @@ main .courses > div .detalies .price span {
 @media (max-width: 767px) {
   main .courses {
     justify-content: center;
-    padding: 20px;
-  }
-  main .courses > div {
-    width: 100%;
-  }
-  main .courses > div .img {
-    width: 100%;
-  }
-  main .courses > div .img .logo img,
-  main .courses > div .img .logo {
-    width: 100%;
-  }
-  main .courses {
-    height: fit-content;
   }
 }
 /* Footer */
 footer {
   background-color: #eeeeee8f;
-  width: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-}
-footer .info {
-  width: 70%;
-}
-footer .info .imge {
-  width: 100%;
-  text-align: right;
-  padding-right: 18%;
+  justify-content: space-evenly;
+  padding: 20px;
 }
 footer .media p {
   font-weight: bolder;
   text-align: center;
   font-size: 25px;
 }
-@media (min-width: 768px) {
-  footer .info .imge img {
-    width: 35%;
-  }
+footer .info .imge img {
+  width: 35%;
 }
 footer .info .information {
   font-size: 12px;
-  font-weight: normal;
   width: 50%;
-  padding-right: 10%;
 }
-@media (min-width: 768px) {
+@media screen and (max-width: 992px) {
   footer {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 0;
-  }
-  footer .info {
-    width: 50%;
+    flex-direction: column;
     text-align: center;
+    padding: 50px;
   }
-  footer .media {
-    padding-left: 150px;
-  }
-}
-@media (max-width: 767px) {
-  footer {
-    padding: 20px 0;
-  }
-  footer .info .imge {
-    padding-right: 25%;
-  }
-  footer .info .imge img {
-    width: 70%;
-  }
-  footer .info,
-  footer .info .information {
-    width: 100%;
-  }
-  footer .info .information {
-    padding-left: 5%;
-    text-align: center;
+  footer .information {
+    margin-top: 30px;
+    width: 100% !important;
   }
 }
 /* Pay */
 .pay {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 5px 20px 0 20px;
+  text-align: center;
+  padding: 10px;
 }
 .copy {
   font-size: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 5px 0;
+  text-align: center;
+  padding: 10px;
+  padding-top: 0;
 }
